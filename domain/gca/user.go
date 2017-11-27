@@ -1,4 +1,4 @@
-package domain
+package gca
 
 // User of the app
 type User struct {

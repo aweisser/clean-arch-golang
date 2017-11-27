@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/aweisser/clean-arch-golang/domain"
+	"github.com/aweisser/clean-arch-golang/domain/gca"
 )
 
 func main() {
-	user := domain.User{Name: "Armin"}
+	user := gca.User{Name: "Armin"}
 	fmt.Printf("Hello, %v.\n", user.Name)
 }
