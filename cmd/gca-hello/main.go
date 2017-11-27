@@ -1,12 +1,11 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/aweisser/clean-arch-golang/domain/gca"
+	"github.com/aweisser/clean-arch-golang/usecases/user"
 )
 
 func main() {
-	user := gca.User{Name: "Armin"}
-	fmt.Printf("Hello, %v.\n", user.Name)
+	u := gca.User{Name: "Armin"}
+	user.SayHello(u)
 }
