@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/aweisser/clean-arch-golang/domain"
+)
 
 func main() {
-	fmt.Printf("Hello, world.\n")
+	user := domain.User{Name: "Armin"}
+	fmt.Printf("Hello, %v.\n", user.Name)
 }
