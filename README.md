@@ -36,7 +36,7 @@ As a developer you can easily figure out what this application is all about and 
 |   +-- go-shopping-flag    
 +-- domain                  (Enterprise Business Rules. This is the most inner layer of the Clean Architecture. Only incoming dependencies are allowed.)
 |   +-- shop                (The domain seems to be a shop.)
-+-- usecase                (Application Business Rules. This is middle layer of the Clean Architecture. Only incoming dependencies from io and outgoing dependencies to domain are allowed)
++-- usecase                 (Application Business Rules. This is middle layer of the Clean Architecture. Only incoming dependencies from io and outgoing dependencies to domain are allowed)
 |   +-- welcome             (The components within this layer may access other usecase components within this layer, as long as there are no cyclic dependencies)
 |   |   +-- customer.go     (There seems to be a use case that welcomes customers.)
 +-- io                      (Interface Adapters. This is the most outer layer and provides adapters to external processes or ports. Only outgoing dependencies to usecase and domain components are allowed.)
