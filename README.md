@@ -19,3 +19,31 @@ As a new developer on the project I also want the folder structure and source fi
 
 ### Use Go best practices
 I also want to follow best practices of Go apps such as a ```cmd``` folder holding all executable ```main.go``` files.
+
+## The Structure
+The top level structure reflects the different layers of the Clean Architecture as well as folder ```cmd```. 
+As a developer you can easily identifiy the different layers and their concerns. Additionally you can easily verify the dependency rules of the Clean Architecture.
+
+(Note that the layer 'Frameworks & Drivers' is not reflected in the folder structure, because this layer only contains external processes that can be adapted by the application.)
+
+The second level is all about the application purpose and follows the Screaming Architecture.
+As a developer you can easily figure out what this application is all about and how to execute and access it.
+
+```
+.
++-- cmd                     (Contains variuous executable entry points to the application.)
+|   +-- go-shopping-cobra   
+|   +-- go-shopping-flag    
++-- domain                  (Enterprise Business Rules. This is the most inner layer of the Clean Architecture. Only incoming dependencies are allowed.)
+|   +-- shop                (The domain seems to be a shop.)
++-- usecase                (Application Business Rules. This is middle layer of the Clean Architecture. Only incoming dependencies from io and outgoing dependencies to domain are allowed)
+|   +-- welcome             (The components within this layer may access other usecase components within this layer, as long as there are no cyclic dependencies.)
+|   |   +-- customer.go     (There seems to be a use case that welcomes customers.)
++-- io                      (Interface Adapters. This is the most outer layer and provides adapters to external processes or ports)
+|   +-- cobracli            (Incoming adapter: a cobra based cli)
+|   +-- flagcli             (Incoming adapter: a flag based cli)
+|   +-- stdout              (Outgoing adapter: a stdout printer)
++-- factory.go              (A global factory assembles concrete components via dependency injection and provides valid application setups. To do this the factory may access every component without any dependency restriction.)
+```
+
+In this structure every go package can be seen as a single component with a clearly seperated concern, organized in concentric layers and follows the dependency rules of the Clean Architecture.

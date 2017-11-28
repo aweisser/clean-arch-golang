@@ -4,7 +4,7 @@ import (
 	"github.com/aweisser/clean-arch-golang"
 
 	"github.com/aweisser/clean-arch-golang/io/cobracli"
-	"github.com/aweisser/clean-arch-golang/usecases/welcome"
+	"github.com/aweisser/clean-arch-golang/usecase/welcome"
 )
 
 func main() {
