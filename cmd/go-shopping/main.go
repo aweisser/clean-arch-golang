@@ -1,22 +1,19 @@
 package main
 
 import (
-	"flag"
+	"github.com/aweisser/clean-arch-golang/io/cli"
 
-	"github.com/aweisser/clean-arch-golang/domain/shop"
-	"github.com/aweisser/clean-arch-golang/io/stdout"
+	"github.com/aweisser/clean-arch-golang"
+
 	"github.com/aweisser/clean-arch-golang/usecases/welcome"
 )
 
 func main() {
-	// parse cli flags
-	var customerName string
-	flag.StringVar(&customerName, "name", "John Doe", "enter your name")
-	flag.Parse()
+	// init a concrete shopping app
+	factory.InitCliShop()
 
-	// assemble app
-	welcome.Greeter = stdout.Greeter{}
-	welcome.Desk = shop.Desk{}
+	// parse command line
+	customerName := cli.ParseNameFlag()
 
 	// execute use case
 	welcome.TheCustomer(customerName)
