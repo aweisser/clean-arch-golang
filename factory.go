@@ -8,6 +8,9 @@ import (
 
 // InitCliShop assembles a shop for CLI tools
 func InitCliShop() {
-	welcome.Greeter = &stdout.Greeter{}
-	welcome.Registry = &shop.SingleDesk{}
+	greeter := &stdout.Greeter{}
+	desk := &shop.SingleDesk{}
+	welcome.Greeter = greeter
+	welcome.Registry = desk
+	welcome.Counter = desk
 }
