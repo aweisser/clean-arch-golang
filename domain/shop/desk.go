@@ -1,11 +1,11 @@
 package shop
 
-// Desk interacts with the customers
-type Desk struct {
+// SingleDesk provides interactions with the customers
+type SingleDesk struct {
 	customers []Customer
 }
 
 // RegisterCustomer adds the customer to the list of current customers
-func (desk Desk) RegisterCustomer(customer Customer) {
+func (desk *SingleDesk) RegisterCustomer(customer Customer) {
 	desk.customers = append(desk.customers, customer)
 }

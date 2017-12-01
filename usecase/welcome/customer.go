@@ -4,8 +4,12 @@ import (
 	"github.com/aweisser/clean-arch-golang/domain/shop"
 )
 
+type greeter interface {
+	Welcome(customer shop.Customer, message string)
+}
+
 // Greeter to greet the Customer
-var Greeter shop.Greeter
+var Greeter greeter
 
 // Desk interacts with the customers
 var Desk shop.Desk
