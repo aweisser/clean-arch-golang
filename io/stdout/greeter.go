@@ -11,6 +11,6 @@ type Greeter struct {
 }
 
 // Welcome the shop.Customer via stdout
-func (greeter Greeter) Welcome(customer shop.Customer, message string) {
+func (greeter *Greeter) Welcome(customer shop.Customer, message string) {
 	fmt.Printf("Welcome %v. %v\n", customer.Name, message)
 }
