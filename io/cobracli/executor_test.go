@@ -1,0 +1,48 @@
+package cobracli_test
+
+import (
+	"flag"
+	"os"
+	"testing"
+
+	"github.com/aweisser/clean-arch-golang/io/cobracli"
+	"github.com/stretchr/testify/assert"
+)
+
+func TestCallbackFunctionReturnsDefaultName(t *testing.T) {
+	oldArgs := os.Args
+	defer func() {
+		os.Args = oldArgs
+		flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+	}()
+	os.Args = []string{"cmd"}
+
+	clbckExecuted := 0
+	cobracli.Execute(cobracli.Definition{
+		Name: "test",
+		Callback: func(name string) {
+			clbckExecuted++
+			assert.Equal(t, "John Doe", name)
+		},
+	})
+	assert.Equal(t, 1, clbckExecuted)
+}
+
+func TestCallbackFunctionReturnsNameParameter(t *testing.T) {
+	oldArgs := os.Args
+	defer func() {
+		os.Args = oldArgs
+		flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+	}()
+	os.Args = []string{"cmd", "--name", "John"}
+
+	clbckExecuted := 0
+	cobracli.Execute(cobracli.Definition{
+		Name: "test",
+		Callback: func(name string) {
+			clbckExecuted++
+			assert.Equal(t, "John", name)
+		},
+	})
+	assert.Equal(t, 1, clbckExecuted)
+}
